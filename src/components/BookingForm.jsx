@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../config"; 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function BookingForm() {
   const navigate = useNavigate();
@@ -48,7 +48,10 @@ function BookingForm() {
 
   return (
     <div id="booking" className="h-[100vh] p-8 mx-auto bg-center" style={{ backgroundImage: "url('images/bg.jpg')" }}>
-      <h2 className="text-3xl font-semibold mb-4 text-center text-white mt-10">Book Your Stay</h2>
+      <div className="flex justify-center items-center gap-3 text-white">
+      <h2 className="text-3xl font-semibold mb-4 text-center text-white">Book Your Stay</h2>
+      <Link to={'/'} className="ml-47">back to home</Link>
+      </div>
       <form onSubmit={handleSubmit} className="max-w-lg flex flex-col space-y-3 justify-center mx-auto">
         <input
           name="name"
