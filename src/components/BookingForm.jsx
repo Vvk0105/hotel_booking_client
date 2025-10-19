@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../config"; 
+import { useNavigate } from "react-router-dom";
 
 function BookingForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,14 +17,32 @@ function BookingForm() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(e.target.name);
     
   }; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(!formData.name || !formData.email || !formData.phone){
+      alert('Please fill all the required fields')
+    }
+
+    if(!/^\d{10}$/.test(formData.phone)){
+      alert('Phone number must be 10 digits')
+    }
+
+    if(isNaN(formData.guests) || formData.guests<1){
+      alert('Guest must be atleast 1')
+    }
+
+    if (!formData.check_in || !formData.check_out) {
+      alert("Please select check-in and check-out date");
+      return;
+    }
+
     await axios.post(`${BASE_URL}/bookings/`, formData);
     alert("Booking submitted successfully!");
+    navigate("/");
     setFormData({ name: "", email: "", phone: "", check_in: "", check_out: "", guests: "", message: "" });
   };
 
@@ -37,7 +57,7 @@ function BookingForm() {
           value={formData.name}
           onChange={handleChange}
           className="p-3 rounded bg-white"
-          required
+          
         />
         <input
           name="email"
@@ -46,7 +66,7 @@ function BookingForm() {
           value={formData.email}
           onChange={handleChange}
           className="p-3 rounded bg-white"
-          required
+          
         />
         <input
           name="phone"
@@ -55,7 +75,7 @@ function BookingForm() {
           value={formData.phone}
           onChange={handleChange}
           className="p-3 rounded bg-white"
-          required
+          
         />
         <input
           name="check_in"
