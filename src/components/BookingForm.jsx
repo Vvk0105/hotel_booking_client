@@ -27,16 +27,16 @@ function BookingForm() {
   };
 
   return (
-    <div id="booking" className="p-8 max-w-lg mx-auto">
-      <h2 className="text-3xl font-semibold mb-4 text-center">Book Your Stay</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
+    <div id="booking" className="h-[100vh] p-8 mx-auto bg-center" style={{ backgroundImage: "url('images/bg.jpg')" }}>
+      <h2 className="text-3xl font-semibold mb-4 text-center text-white mt-10">Book Your Stay</h2>
+      <form onSubmit={handleSubmit} className="max-w-lg flex flex-col space-y-3 justify-center mx-auto">
         <input
           name="name"
           type="text"
           placeholder="Name"
           value={formData.name}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <input
@@ -45,7 +45,7 @@ function BookingForm() {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <input
@@ -54,7 +54,7 @@ function BookingForm() {
           placeholder="Phone"
           value={formData.phone}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <input
@@ -63,7 +63,7 @@ function BookingForm() {
           placeholder="Check In"
           value={formData.check_in}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <input
@@ -72,7 +72,7 @@ function BookingForm() {
           placeholder="Check Out"
           value={formData.check_out}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <input
@@ -81,7 +81,7 @@ function BookingForm() {
           placeholder="Guests"
           value={formData.guests}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
           required
         />
         <textarea
@@ -89,7 +89,7 @@ function BookingForm() {
           placeholder="Message"
           value={formData.message}
           onChange={handleChange}
-          className="border p-2 rounded"
+          className="p-3 rounded bg-white"
         />
         <button className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Submit</button>
       </form>
