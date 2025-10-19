@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../config"; 
 
-export default function BookingForm() {
+function BookingForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +15,8 @@ export default function BookingForm() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(e.target.name);
+    
   }; 
 
   const handleSubmit = async (e) => {
@@ -94,3 +96,5 @@ export default function BookingForm() {
     </div>
   );
 }
+
+export default BookingForm
